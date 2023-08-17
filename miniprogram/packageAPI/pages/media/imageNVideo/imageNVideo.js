@@ -47,7 +47,7 @@ Page({
         selected: false,
       },
     ],
-    inputText,
+    inputText: '',
   },
 
   sourceTypeChange(e) {
@@ -127,6 +127,15 @@ Page({
     // });
   },
 
+  getInputContent(isAdd, str) {
+    const currText = this.data.inputText;
+    if (isAdd) {
+      return currText + ` ${str}`;
+    } else {
+      return currText.replace(str, '');
+    }
+  },
+
   selectTag(event) {
     const selectedTag = event.currentTarget.dataset.tag;
     const index = this.data.tagList.findIndex(item => item.name === selectedTag.name);
@@ -134,7 +143,8 @@ Page({
       this.data.tagList[index].selected = !this.data.tagList[index].selected;
 
       this.setData({
-        tagList: this.data.tagList
+        tagList: this.data.tagList,
+        inputText: this.getInputContent(!selectedTag.selected, selectedTag.name)
       });
     }
   }
