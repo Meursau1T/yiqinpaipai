@@ -1,0 +1,31 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+
+<view class="container page" data-weui-theme="{{theme}}">
+  <template is="head" data="{{title: 'saveFile'}}"/>
+
+  <view class="page-body">
+    <view class="page-section">
+      <view class="page-body-info">
+        <view class="image-row">
+          <block wx:for="{{imagePaths}}" wx:for-item="path" wx:for-index="index">
+            <view class="image-item" bindtouchstart="startTouch" bindtouchmove="moveTouch" bindtouchend="endTouch" data-index="{{index}}">
+            <image src="{{path}}" class="image" mode="aspectFit"></image>
+            <view class="delete-overlay" wx:if="{{index === deleteOverlayIndex}}">
+          <view class="delete-option" bindtap="confirmDelete">删除</view>
+        </view>
+      </view>
+      <view wx:if="{{index % 3 !== 2}}" class="image-gap"></view>
+    </block>
+  </view>
+</view>
+
+      <view class="btn-area">
+        <button type="primary" bindtap="saveFile">{{ isEditMode ? '确认保存文件' : '保存文件' }}</button>
+        <button bindtap="toggleEditMode">{{ isEditMode ? '取消删除' : '选择删除文件' }}</button>
+      </view>
+
+    </view>
+  </view>
+  <template is="foot" />
+</view>

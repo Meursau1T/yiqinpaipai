@@ -1,0 +1,63 @@
+<import src="../../../common/head.wxml" />
+<import src="../../../common/foot.wxml" />
+
+<view class="container page" data-weui-theme="{{theme}}">
+  <template is="head" data="{{title: 'choose/previewImage'}}"/>
+
+  <view class="page-body">
+    <view class="page-section">
+
+      <!-- 图片上传 -->
+      <view class="weui-cells">
+        <view class="weui-cell">
+          <view class="weui-cell__bd">
+            <view class="weui-uploader">
+              <view class="weui-uploader__hd">
+                <view class="weui-uploader__title">添加图片/视频</view>
+                <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
+              </view>
+              <view class="weui-uploader__bd">
+                <view class="weui-uploader__files">
+                  <block wx:for="{{imageList}}" wx:for-item="image">
+                    <view class="weui-uploader__file">
+                      <image class="weui-uploader__img" mode="aspectFill" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                    </view>
+                  </block>
+                </view>
+                <view class="weui-uploader__input-box">
+                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <!-- 标签输入 -->
+      <view class="weui-cells">
+        <!-- 输入框 -->
+        <view class="container">
+          <input class="page-body-text" placeholder="输入文本或者点击标签选择病例" value="{{inputText}}"/>
+        </view>
+        <!-- 标签列表 -->
+        <view class="weui-cells">
+          <view class="weui-cell">
+            可选标签
+          </view>
+          <view class="tag-list">
+            <block wx:for="{{tagList}}">
+              <view class="{{item.selected ? 'tag tag-selected' : 'tag'}}" bindtap="selectTag" data-tag="{{item}}">
+                {{item.name}}
+              </view>
+            </block>
+          </view>
+        </view>
+      </view>
+
+      <view class="footer">
+        <button class="weui-btn weui-btn_warn footer-item" bindtap="confirmUpload">一键清空</button>
+        <button class="weui-btn weui-btn_primary footer-item" bindtap="confirmUpload">确认提交</button>
+      </view>
+    </view>
+  </view>
+</view>

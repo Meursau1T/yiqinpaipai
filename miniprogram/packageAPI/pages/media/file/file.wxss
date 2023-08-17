@@ -1,0 +1,28 @@
+/* 页面整体样式 */
+.page-body-info {
+  width: 100%; /* 页面宽度 */
+}
+
+/* 九宫格排列样式 */
+.image-row {
+  display: grid;
+  
+  align-items: center;
+}
+
+.delete-overlay {
+  position: absolute;
+  top: 0;
+  right: -60px; /* 初始状态隐藏 */
+  width: 60px;
+  height: 100%;
+  background-color: red;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: right 0.3s;
+}
+
+.delete-overlay.show {
+  right: 0;
+}

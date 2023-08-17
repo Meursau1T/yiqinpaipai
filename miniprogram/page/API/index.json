@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "病禽拍拍-功能页（Beta版）",
+    "usingComponents": {
+      "set-tab-bar": "components/set-tab-bar/set-tab-bar"
+    }
+}

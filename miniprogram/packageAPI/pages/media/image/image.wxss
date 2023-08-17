@@ -1,0 +1,27 @@
+/* 页面样式 */
+/* ...其他样式... */
+
+/* 初次使用指引图层样式 */
+.guide-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.guide-image {
+  width: 40px;
+  height: 40px;
+}
+
+.guide-text {
+  margin-top: 10px;
+  font-size: 14px;
+  color: white;
+}
