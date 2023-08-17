@@ -54,6 +54,7 @@
         </view>
       </view>
 
+      <!-- 按钮 -->
       <view class="footer">
         <button class="weui-btn weui-btn_warn footer-item" bindtap="confirmUpload">一键清空</button>
         <button class="weui-btn weui-btn_primary footer-item" bindtap="confirmUpload">确认提交</button>
