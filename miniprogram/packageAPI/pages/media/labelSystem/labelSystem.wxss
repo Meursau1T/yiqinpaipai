@@ -31,6 +31,7 @@
   display: flex;
   flex-direction: row;
   padding: 0 16px 16px 16px;
+  flex-wrap: wrap;
 }
 
 .tag {
@@ -39,8 +40,10 @@
   color: rgb(163, 163, 163);
   border-radius: 4px;
   margin: 0 4px;
-  font-size: 20rpx;
+  font-size: 28rpx;
   padding: 2px 8px;
+  white-space: nowrap;
+  margin-bottom: 4px;
 }
 
 .tag-selected {
