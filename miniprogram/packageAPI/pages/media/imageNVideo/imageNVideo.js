@@ -110,12 +110,15 @@ Page({
     });
   },
 
+  /** 计算添加或删除标签字符串后的字符串 */
   getInputContent(isAdd, str) {
     const currText = this.data.inputText;
     if (isAdd) {
+      // 添加前先确定当前字符串末尾是否有空格，如果没有，再添加一个
       const preSpace = currText[currText.length - 1] !== ' ' && currText !== '';
       return currText + `${preSpace ? ' ' : ''}${str} `;
     } else {
+      // 删除时，如果后面跟的有空格，一起删掉，避免反复添加删除后空格残留
       return currText.replace(new RegExp(`${str}\\s?`, 'g'), "");
     }
   },
