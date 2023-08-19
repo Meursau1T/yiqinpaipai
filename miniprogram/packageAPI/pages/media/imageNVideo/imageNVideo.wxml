@@ -14,18 +14,18 @@
             <view class="weui-uploader">
               <view class="weui-uploader__hd">
                 <view class="weui-uploader__title">添加图片/视频</view>
-                <view class="weui-uploader__info">{{imageList.length}}/{{count[countIndex]}}</view>
+                <view class="weui-uploader__info">{{mediaList.length}}/{{count[countIndex]}}</view>
               </view>
               <view class="weui-uploader__bd">
                 <view class="weui-uploader__files">
-                  <block wx:for="{{imageList}}" wx:for-item="image">
+                  <block wx:for="{{mediaList}}" wx:for-item="item">
                     <view class="weui-uploader__file">
-                      <image class="weui-uploader__img" mode="aspectFill" src="{{image}}" data-src="{{image}}" bindtap="previewImage"></image>
+                      <image class="weui-uploader__img" mode="aspectFill" src="{{item.fileType === 'video' ? item.thumbTempFilePath : item.tempFilePath}}" data-src="{{item.tempFilePath}}" bindtap="previewMedia"></image>
                     </view>
                   </block>
                 </view>
                 <view class="weui-uploader__input-box">
-                  <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                  <view class="weui-uploader__input" bindtap="chooseMedia"></view>
                 </view>
               </view>
             </view>
