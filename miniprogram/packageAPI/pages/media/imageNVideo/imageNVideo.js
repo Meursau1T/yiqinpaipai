@@ -113,10 +113,10 @@ Page({
   getInputContent(isAdd, str) {
     const currText = this.data.inputText;
     if (isAdd) {
-      const preSpace = currText[currText.length - 1] !== ' ';
+      const preSpace = currText[currText.length - 1] !== ' ' && currText !== '';
       return currText + `${preSpace ? ' ' : ''}${str} `;
     } else {
-      return currText.replace(str, "");
+      return currText.replace(new RegExp(`${str}\\s?`, 'g'), "");
     }
   },
 
