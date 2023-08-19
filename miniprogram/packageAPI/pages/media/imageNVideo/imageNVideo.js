@@ -113,7 +113,8 @@ Page({
   getInputContent(isAdd, str) {
     const currText = this.data.inputText;
     if (isAdd) {
-      return currText + ` ${str}`;
+      const preSpace = currText[currText.length - 1] !== ' ';
+      return currText + `${preSpace ? ' ' : ''}${str} `;
     } else {
       return currText.replace(str, "");
     }
@@ -137,7 +138,7 @@ Page({
     }
   },
 
-  clearInput(event) {
+  clearInput() {
     const listLen = this.data.tagList.length;
     for (let i = 0; i < listLen; i++) {
       this.data.tagList[i].selected = false;

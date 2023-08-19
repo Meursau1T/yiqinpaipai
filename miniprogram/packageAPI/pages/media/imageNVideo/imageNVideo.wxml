@@ -37,7 +37,7 @@
       <view class="weui-cells">
         <!-- 输入框 -->
         <view class="container">
-          <input class="page-body-text" bindinput="changeText" placeholder="输入文本或者点击标签选择病例" value="{{inputText}}"/>
+          <textarea class="page-body-text" bindinput="changeText" placeholder="输入文本或者点击标签选择病例" value="{{inputText}}"/>
         </view>
         <!-- 标签列表 -->
         <view class="weui-cells">
