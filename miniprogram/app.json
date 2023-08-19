@@ -50,7 +50,7 @@
         "pages/device/get-battery-info/get-battery-info",
         "pages/media/image/image",
         "pages/media/voice/voice",
-        "pages/media/imageNVideo/imageNVideo",
+        "pages/media/labelSystem/labelSystem",
         "pages/media/file/file",
         "pages/media/load-font-face/load-font-face",
         "pages/media/label/label",

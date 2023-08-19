@@ -2,7 +2,7 @@ Page({
   onShareAppMessage() {
     return {
       title: "病禽拍拍",
-      path: "packageAPI/pages/media/imageNVideo/imageNVideo",
+      path: "packageAPI/pages/media/labelSystem/labelSystem",
     };
   },
 

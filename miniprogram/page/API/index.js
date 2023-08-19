@@ -36,7 +36,7 @@ Page({
         url: 'video/video'
       },{
         zh: '病禽记录上传',
-        url: 'imageNVideo/imageNVideo'
+        url: 'labelSystem/labelSystem'
       },{
         zh: '历史记录',
         url: 'file/file'
