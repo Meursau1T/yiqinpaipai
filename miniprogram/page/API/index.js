@@ -10,7 +10,7 @@ Page({
     list: [{
       id: 'api',
       name: '通用设置',
-      open: false,
+      open: true,
       pages: [{
         zh: '微信登录',
         url: 'login/login'
@@ -24,7 +24,7 @@ Page({
     }, {
       id: 'media',
       name: '病禽拍拍',
-      open: false,
+      open: true,
       pages: [{
         zh: '病禽记录上传',
         url: 'labelSystem/labelSystem'
