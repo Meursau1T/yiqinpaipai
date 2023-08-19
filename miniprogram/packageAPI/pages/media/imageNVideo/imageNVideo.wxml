@@ -37,7 +37,7 @@
       <view class="weui-cells">
         <!-- 输入框 -->
         <view class="container">
-          <input class="page-body-text" placeholder="输入文本或者点击标签选择病例" value="{{inputText}}"/>
+          <input class="page-body-text" bindinput="changeText" placeholder="输入文本或者点击标签选择病例" value="{{inputText}}"/>
         </view>
         <!-- 标签列表 -->
         <view class="weui-cells">
@@ -56,7 +56,7 @@
 
       <!-- 按钮 -->
       <view class="footer">
-        <button class="weui-btn weui-btn_warn footer-item" bindtap="confirmUpload">一键清空</button>
+        <button class="weui-btn weui-btn_warn footer-item" bindtap="clearInput">一键清空</button>
         <button class="weui-btn weui-btn_primary footer-item" bindtap="confirmUpload">确认提交</button>
       </view>
     </view>

@@ -127,6 +127,12 @@ Page({
     // });
   },
 
+  changeText(e){
+    this.setData({
+      inputText: e.detail.value
+    })
+  },
+  
   getInputContent(isAdd, str) {
     const currText = this.data.inputText;
     if (isAdd) {
@@ -147,5 +153,16 @@ Page({
         inputText: this.getInputContent(!selectedTag.selected, selectedTag.name)
       });
     }
+  },
+
+  clearInput(event) {
+    const listLen = this.data.tagList.length;
+    for(let i = 0; i < listLen; i++){
+      this.data.tagList[i].selected = false;
+    }
+    this.setData({
+        tagList: this.data.tagList,
+        inputText: ''
+    });
   }
 });
