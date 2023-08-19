@@ -39,11 +39,10 @@
   background: var(--weui-BTN-DEFAULT-BG);
   color: rgb(163, 163, 163);
   border-radius: 4px;
-  margin: 0 4px;
+  margin: 0 4px 8px 4px;
   font-size: 28rpx;
   padding: 2px 8px;
   white-space: nowrap;
-  margin-bottom: 4px;
 }
 
 .tag-selected {
