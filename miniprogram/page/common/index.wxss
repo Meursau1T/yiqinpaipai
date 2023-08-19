@@ -119,7 +119,7 @@
   transition: opacity .3s;
 }
 .kind-list-item-hd-show {
-  opacity: .7;
+  opacity: .2;
 }
 .kind-list-item-bd {
   height: 0;
