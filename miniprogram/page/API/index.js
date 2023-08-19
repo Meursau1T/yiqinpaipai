@@ -15,9 +15,6 @@ Page({
         zh: '微信登录',
         url: 'login/login'
       }, {
-        zh: '病情手动标注系统',
-        url: 'get-user-info/get-user-info'
-      }, {
         zh: '生物认证',
         url: 'soter-authentication/soter-authentication'
       }, {
@@ -29,12 +26,6 @@ Page({
       name: '病禽拍拍',
       open: false,
       pages: [{
-        zh: '病禽图片上传',
-        url: 'image/image'
-      },{
-        zh: '病禽视频上传',
-        url: 'video/video'
-      },{
         zh: '病禽记录上传',
         url: 'labelSystem/labelSystem'
       },{
