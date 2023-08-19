@@ -1,19 +1,15 @@
-const sourceType = [['camera'], ['album'], ['camera', 'album']];
-const sizeType = [['compressed'], ['original'], ['compressed', 'original']];
-
 Page({
   onShareAppMessage() {
     return {
-      title: '病禽拍拍',
-      path: 'packageAPI/pages/media/imageNVideo/imageNVideo'
+      title: "病禽拍拍",
+      path: "packageAPI/pages/media/imageNVideo/imageNVideo",
     };
   },
 
   data: {
-    theme: 'light',
+    theme: "light",
     mediaList: [],
-    countIndex: 8,
-    count: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    maxMediaNumber: 9,
     tagList: [
       {
         name: "发热",
@@ -40,42 +36,41 @@ Page({
         selected: false,
       },
     ],
-    inputText: '',
-  },
-
-  countChange(e) {
-    this.setData({
-      countIndex: e.detail.value
-    });
+    inputText: "",
   },
 
   chooseMedia() {
     const that = this;
     wx.chooseMedia({
-      mediaType: ['image', 'video', 'mix'],
+      mediaType: ["image", "video", "mix"],
       maxDuration: 60,
-      count: this.data.count[this.data.countIndex],
+      count: this.data.maxMediaNumber - this.data.mediaList.length,
       success(res) {
-        console.log('dev wxf imageList', [...that.data.mediaList, ...res.tempFiles]);
-        that.setData({
-          mediaList: [...that.data.mediaList, ...res.tempFiles]
-        });
-      }
+        if (that.data.mediaList.length + res.tempFiles.length > 9) {
+          wx.showToast({
+            title: "最多只能上传九张",
+          });
+        } else {
+          that.setData({
+            mediaList: [...that.data.mediaList, ...res.tempFiles],
+          });
+        }
+      },
     });
   },
 
   previewMedia(e) {
-    const current = e.target.dataset.src;
+    const current = e.currentTarget.dataset.index;
 
     wx.previewMedia({
       current,
-      sources: this.data.mediaList.map(item => ({ url: item.tempFilePath}) )
+      sources: this.data.mediaList.map((item) => ({ url: item.tempFilePath })),
     });
   },
 
   onLoad() {
     this.setData({
-      theme: wx.getSystemInfoSync().theme || 'light'
+      theme: wx.getSystemInfoSync().theme || "light",
     });
 
     if (wx.onThemeChange) {
@@ -93,7 +88,7 @@ Page({
 
     // 跳转到文件预览页面，并传递上传的图片路径
     wx.navigateTo({
-      url: `../file/file?imagePaths=${JSON.stringify(uploadedImagePaths)}`
+      url: `../file/file?imagePaths=${JSON.stringify(uploadedImagePaths)}`,
     });
 
     // // 在成功返回上一页后显示上传成功的反馈信息
@@ -109,42 +104,47 @@ Page({
     // });
   },
 
-  changeText(e){
+  changeText(e) {
     this.setData({
-      inputText: e.detail.value
-    })
+      inputText: e.detail.value,
+    });
   },
-  
+
   getInputContent(isAdd, str) {
     const currText = this.data.inputText;
     if (isAdd) {
       return currText + ` ${str}`;
     } else {
-      return currText.replace(str, '');
+      return currText.replace(str, "");
     }
   },
 
   selectTag(event) {
     const selectedTag = event.currentTarget.dataset.tag;
-    const index = this.data.tagList.findIndex(item => item.name === selectedTag.name);
+    const index = this.data.tagList.findIndex(
+      (item) => item.name === selectedTag.name
+    );
     if (index >= 0) {
       this.data.tagList[index].selected = !this.data.tagList[index].selected;
 
       this.setData({
         tagList: this.data.tagList,
-        inputText: this.getInputContent(!selectedTag.selected, selectedTag.name)
+        inputText: this.getInputContent(
+          !selectedTag.selected,
+          selectedTag.name
+        ),
       });
     }
   },
 
   clearInput(event) {
     const listLen = this.data.tagList.length;
-    for(let i = 0; i < listLen; i++){
+    for (let i = 0; i < listLen; i++) {
       this.data.tagList[i].selected = false;
     }
     this.setData({
-        tagList: this.data.tagList,
-        inputText: ''
+      tagList: this.data.tagList,
+      inputText: "",
     });
-  }
+  },
 });
