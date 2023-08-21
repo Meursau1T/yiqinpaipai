@@ -1,3 +1,8 @@
+const app = getApp();
+//引入插件：微信同声传译
+const plugin = requirePlugin('WechatSI');
+//获取全局唯一的语音识别管理器recordRecoManager
+const manager = plugin.getRecordRecognitionManager();
 Page({
   onShareAppMessage() {
     return {
@@ -37,6 +42,8 @@ Page({
       },
     ],
     inputText: "",
+    //  语音
+     recordState: false, //录音状态
   },
 
   chooseMedia() {
@@ -151,4 +158,48 @@ Page({
       inputText: "",
     });
   },
+  touchStart: function() {
+    this.setData({
+        recordState: true  //录音状态
+      })
+    manager.start({
+      lang: 'zh_CN',
+    })
+  },
+  touchEnd: function() {
+    this.setData({
+        recordState: false
+      })
+      // 语音结束识别
+    manager.stop()
+  },
+  initRecord: function() { 
+    const that=this; 
+      //有新的识别内容返回，则会调用此事件
+    manager.onRecognize = (res) => {   
+        let text = res.result;
+        let currentText= that.data.inputText;
+        that.setData({
+            inputText: `${currentText}${text}`
+        })
+    }    
+    // 识别结束事件
+    manager.onStop = (res) => {      
+        let text = res.result      
+        if(text == '') {        // 用户没有说话，可以做一下提示处理...
+            return;
+      }      
+        that.setData({
+            inputText: `${that.data.inputText}${text}`,
+         })      
+        
+    }
+  },
+  onLoad: function() {    
+      this.initRecord()
+  }
+
+
+
+
 });

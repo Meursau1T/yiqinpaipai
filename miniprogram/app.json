@@ -163,5 +163,11 @@
   "frameset": true,
   "requiredBackgroundModes": ["audio", "location"],
   "embeddedAppIdList": ["wxfdcee92a299bcaf1"],
-  "lazyCodeLoading": "requiredComponents"
+  "lazyCodeLoading": "requiredComponents",
+  "plugins": {
+    "WechatSI": {
+      "version": "0.3.5",
+      "provider": "wx069ba97219f66d99"
+    }
+}
 }
